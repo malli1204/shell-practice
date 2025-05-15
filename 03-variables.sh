@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "Enter your pin number as"
+num1=100
+num2=200
 
-read -s PIN 
-echo "your pin is : $PIN"
+sum=($num1+$num2)
+timestamp=$(date)
