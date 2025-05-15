@@ -5,4 +5,4 @@ num2=200
 
 #sum=$(($num1+$num2))
 timestamp=$(date)
-echo "executed : $date"
+echo "executed : $timestamp"
