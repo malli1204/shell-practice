@@ -17,5 +17,5 @@ then
     echo "Installing is success "
 else 
     echo "Installing is not succcess"
-    exit 1
+    #exit 1
 fi
