@@ -1,0 +1,59 @@
+#!/bin/bash
+
+uid=$(id -u)
+
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+LOGS_FOLDER="/var/log/shellscript.logs"
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+
+mkdir -p $LOGS_FOLDER
+echo "script started executing at : $(date)" &>>LOG_FILE
+if [ $uid -ne 0 ] 
+then 
+    echo -e "$R you are not running with root user $N"&>>LOG_FILE
+    exit 1
+else 
+    echo "you are running with root user"&>>LOG_FILE
+fi
+
+validate(){
+    if [ $1 -eq 0 ]
+    then 
+        echo -e "Installing $2 is $G success $N "&>>LOG_FILE
+    else 
+        echo -e "Installing $2 is $R not succcess $N"&>>LOG_FILE
+    fi
+}
+dnf list installed mysql
+if [ $? -ne 0 ]
+then 
+    echo "mysql is not installed...going to install"&>>LOG_FILE
+    dnf install mysql -y
+    validate $? "mysql"&>>LOG_FILE
+else 
+    echo "already installed"&>>LOG_FILE
+fi
+
+dnf list installed nginx
+if [ $? -ne 0 ]
+then 
+    echo "nginx is not installed...going to install"&>>LOG_FILE
+    dnf install nginx -y
+    validate $? "nginx"&>>LOG_FILE
+else 
+    echo "already installed"&>>LOG_FILE
+fi
+
+dnf list installed python3
+if [ $? -ne 0 ]
+then 
+    echo "python3 is not installed...going to install"
+    dnf install python3 -y
+    validate $? "python3"
+else 
+    echo "already installed"
+fi

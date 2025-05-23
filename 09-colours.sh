@@ -9,7 +9,7 @@ N="\e[0m"
 
 if [ $uid -ne 0 ] 
 then 
-    echo -e "$R you are not running with root user"
+    echo -e "$R you are not running with root user $N"
     exit 1
 else 
     echo "you are running with root user"
