@@ -10,12 +10,27 @@ else
     echo "you are running with root user"
 fi
 
-dnf install mysqlasd -y
-
-if [ $? -eq 0 ]
+dnf list installed mysql
+if [ $? -ne 0 ]
 then 
-    echo "Installing is success "
+    echo "mysql is not installed...going to install"
+    dnf install mysql -y
+    if [ $? -eq 0 ]
+    then 
+        echo "Installing is success "
+    else 
+        echo "Installing is not succcess"
+        exit 1
+    fi
 else 
-    echo "Installing is not succcess"
-    #exit 1
-fi
+    echo "already installed"
+
+# dnf install mysql -y
+
+# if [ $? -eq 0 ]
+# then 
+#     echo "Installing is success "
+# else 
+#     echo "Installing is not succcess"
+#     exit 1
+# fi
