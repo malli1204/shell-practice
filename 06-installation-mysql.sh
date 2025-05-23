@@ -2,7 +2,7 @@
 
 uid=$(id -u)
 
-if [ uid -ne 0 ] 
+if [ $uid -ne 0 ] 
 then 
     echo "you are not running with root user"
     exit 1
