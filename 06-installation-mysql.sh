@@ -24,7 +24,7 @@ then
     fi
 else 
     echo "already installed"
-fi
+
 # dnf install mysql -y
 
 # if [ $? -eq 0 ]
