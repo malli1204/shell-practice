@@ -14,46 +14,46 @@ mkdir -p $LOGS_FOLDER
 echo "script started executing at : $(date)" &>>$LOG_FILE
 if [ $uid -ne 0 ] 
 then 
-    echo -e "$R you are not running with root user $N"&>>$LOG_FILE
+    echo -e "$R you are not running with root user $N" &>>$LOG_FILE
     exit 1
 else 
-    echo "you are running with root user"&>>$LOG_FILE
+    echo "you are running with root user" &>>$LOG_FILE
 fi
 
 validate(){
     if [ $1 -eq 0 ]
     then 
-        echo -e "Installing $2 is $G success $N "&>>$LOG_FILE
+        echo -e "Installing $2 is $G success $N " &>>$LOG_FILE
     else 
-        echo -e "Installing $2 is $R not succcess $N"&>>$LOG_FILE
+        echo -e "Installing $2 is $R not succcess $N" &>>$LOG_FILE
     fi
 }
-dnf list installed mysql
+dnf list installed mysql &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
-    echo "mysql is not installed...going to install"&>>$LOG_FILE
-    dnf install mysql -y
-    validate $? "mysql"&>>$LOG_FILE
+    echo "mysql is not installed...going to install" &>>$LOG_FILE
+    dnf install mysql -y &>>$LOG_FILE
+    validate $? "mysql"
 else 
-    echo "already installed"&>>$LOG_FILE
+    echo "already installed" &>>$LOG_FILE
 fi
 
-dnf list installed nginx
+dnf list installed nginx &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
     echo "nginx is not installed...going to install"&>>$LOG_FILE
-    dnf install nginx -y
-    validate $? "nginx"&>>$LOG_FILE
+    dnf install nginx -y &>>$LOG_FILE
+    validate $? "nginx"
 else 
     echo "already installed"&>>$LOG_FILE
 fi
 
-dnf list installed python3
+dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]
 then 
-    echo "python3 is not installed...going to install"
-    dnf install python3 -y
+    echo "python3 is not installed...going to install" &>>$LOG_FILE
+    dnf install python3 -y &>>$LOG_FILE
     validate $? "python3"
 else 
-    echo "already installed"
+    echo "already installed" &>>$LOG_FILE
 fi
