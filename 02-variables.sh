@@ -5,7 +5,7 @@ echo "$time"
 
 
 echo "enter your pin ::"
-read pin
+read -s pin
 echo "Your PIN is ::$pin"
 
  #person1=$1
