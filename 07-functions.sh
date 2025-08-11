@@ -19,16 +19,15 @@ Validate(){
         exit 1
     fi
 }
-dnf installed list $2
+dnf installed list mysql
 if [ $? -ne 0 ]
 then 
     echo "$2 is not installed.... going to install"
-    dnf install $2 -y
+    dnf install mysql -y
     Validate $? "mysql"
     fi
 else
-    echo "mysql is installed nothing 
-fito do"
+    echo "mysql is installed nothing to do"
 fi
 
 
