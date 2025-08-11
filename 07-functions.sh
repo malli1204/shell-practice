@@ -25,7 +25,7 @@ then
     echo "$2 is not installed.... going to install"
     dnf install mysql -y
     Validate $? "mysql"
-    fi
+
 else
     echo "mysql is installed nothing to do"
 fi
