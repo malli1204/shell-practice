@@ -32,14 +32,14 @@ validate(){
 
 for packages in {$PACKAGES[@]}
 do 
-    dnf list installed $package 
+    dnf list installed $package &>>$LOG_FILE
     if [ $? -ne 0 ]
     then
         echo "$package is not installed....going to install" 
-        dnf install $package -Y
-        validate $? "$package"
+        dnf install $package -Y &>>$LOG_FILE
+        validate $? "$package" &>>$LOG_FILE
     else 
-        echo "package alread installed"
+        echo "package alread installed" | tee -a $LOG_FILE
         fi
 done
 # for package in $@
