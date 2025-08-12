@@ -1,5 +1,8 @@
 #!/bin/bash
 
-echo -e "\e[31m hello world \e[0m"
+R=\e[31m
+G=\e[32m
+Y=\e[33m
+N=\e[0m
 
-echo "hello no colours "
+echo -e "$R Hi i am malli"
