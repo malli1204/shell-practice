@@ -30,18 +30,30 @@ validate(){
     fi
 }
 
-for package in $@
+for packages in {$PACKAGES[@]}
 do 
-    dnf list installed $package &>>$LOG_FILE
+    dnf list installed $package 
     if [ $? -ne 0 ]
-    then 
-        echo "$package is not installed...going to install" | tee -a $LOG_FILE
-        dnf install $package -y &>>$LOG_FILE
+    then
+        echo "$package is not installed....going to install" 
+        dnf install $package -Y
         validate $? "$package"
     else 
-        echo "already installed" | tee -a $LOG_FILE
-    fi
+        echo "package alread installed"
+        fi
 done
+# for package in $@
+# do 
+#     dnf list installed $package &>>$LOG_FILE
+#     if [ $? -ne 0 ]
+#     then 
+#         echo "$package is not installed...going to install" | tee -a $LOG_FILE
+#         dnf install $package -y &>>$LOG_FILE
+#         validate $? "$package"
+#     else 
+#         echo "already installed" | tee -a $LOG_FILE
+#     fi
+# done
 
 # dnf list installed mysql &>>$LOG_FILE
 # if [ $? -ne 0 ]
