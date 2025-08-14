@@ -61,13 +61,14 @@ then
 fi
 
 
+files=$(find $source_dir -name "*.log" -mtime +$days)
 
-
-
-
-# source_file=/home/ec2-user/shell-practice/app-logs
-
-# files=$(find $source_file -name "*.log" -mtime +14)
+if [ ! -z $files ]
+then 
+    echo -e "files found"
+else
+    echo -e "no files to zip"
+fi
 
 # while IFS= read -r filepath
 # do
