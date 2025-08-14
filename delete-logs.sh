@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source_file=/home/ec2-user/app-logs
+source_file=/home/ec2-user/shell-practice/app-logs
 
 files=$(find $source_file -name "*.log" -mtime +14)
 
