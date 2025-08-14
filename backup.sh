@@ -62,8 +62,8 @@ fi
 
 
 files=$(find $source_dir -name "*.log" -mtime +$days)
-echo "$files"
-if [ -z $files ]
+
+if [ -z  $files ]
 then 
     echo -e "no files to zip"
 
