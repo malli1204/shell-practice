@@ -8,3 +8,5 @@ while IFS= read -r filepath
 do
     rm -rf $filepath
 done <<< $files
+
+echo "$?"
