@@ -49,10 +49,16 @@ then
     usage
 fi
 
+if [ ! -d  $source_dir ]
+then 
+    echo -e "source dir dosen't exist"
+fi
 
 
-
-
+if [ ! -d  $dest_dir ]
+then 
+    echo -e "destination dir dosen't exist"
+fi
 
 
 
