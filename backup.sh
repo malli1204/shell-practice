@@ -65,13 +65,13 @@ fi
 
 
 
-source_file=/home/ec2-user/shell-practice/app-logs
+# source_file=/home/ec2-user/shell-practice/app-logs
 
-files=$(find $source_file -name "*.log" -mtime +14)
+# files=$(find $source_file -name "*.log" -mtime +14)
 
-while IFS= read -r filepath
-do
-    echo "DEleted files are : $filepath"
-    rm -rf $filepath
-done <<< $files
+# while IFS= read -r filepath
+# do
+#     echo "DEleted files are : $filepath"
+#     rm -rf $filepath
+# done <<< $files
 
