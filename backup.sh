@@ -63,12 +63,15 @@ fi
 
 files=$(find $source_dir -name "*.log" -mtime +$days)
 
-if [[ -z  $files ]]
-then 
-    echo -e "no files to zip"
+if [[ ! -z  $files ]]
+then
+    echo -e "files found"  
+    timestamp=$(date +%F-%H-%M-%S)
+    zipfile=$dest_dir/app-logs-$timestamp.zip
+    find $source_dir -name "*.log" -mtime +$days | zip -@ $zipfile
 
 else
-    echo -e "files found"   
+    echo -e "no files to zip"      
 fi
 
 # while IFS= read -r filepath
