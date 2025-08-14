@@ -63,12 +63,12 @@ fi
 
 files=$(find $source_dir -name "*.log" -mtime +$days)
 
-if [ ! -z $files ]
+if [ -z $files ]
 then 
-    echo -e "files found"
-    
-else
     echo -e "no files to zip"
+
+else
+    echo -e "files found"   
 fi
 
 # while IFS= read -r filepath
