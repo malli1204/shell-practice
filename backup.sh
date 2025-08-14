@@ -69,14 +69,19 @@ then
     timestamp=$(date +%F-%H-%M-%S)
     zipfile=$dest_dir/app-logs-$timestamp.zip
     find $source_dir -name "*.log" -mtime +$days | zip -@ $zipfile
-
+    if [ -f $zipfile ]
+    then 
+        echo -e "succesfully created zip"
+        while IFS= read -r filepath
+        do
+            echo "DEleted files are : $filepath"
+            rm -rf $filepath
+        done <<< $files
+    else
+        echo -e "failed to create zip file"
+    fi
 else
     echo -e "no files to zip"      
 fi
 
-# while IFS= read -r filepath
-# do
-#     echo "DEleted files are : $filepath"
-#     rm -rf $filepath
-# done <<< $files
 
