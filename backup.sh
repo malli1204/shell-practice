@@ -3,8 +3,8 @@ START_TIME=$(date +%s)
 
 
 source_dir=$1
-dest_dir-$2
-time_stamp=$(3:-14)
+dest_dir=$2
+days=${3:-14}
 
 USERID=$(id -u)
 R="\e[31m"
